@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SelectDropDown {
+public class SelectMethods_DropDown {
 
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = new ChromeDriver();
@@ -21,7 +21,7 @@ public class SelectDropDown {
 		WebElement month= driver.findElement(By.id("month"));
 		WebElement year= driver.findElement(By.id("year"));
 		
-		
+		// 1. Select Methods
 		Select daySelect= new Select(day);		
 		daySelect.selectByIndex(8);
 		Thread.sleep(3000);
@@ -44,6 +44,8 @@ public class SelectDropDown {
 		yearSelect.selectByValue("1993");
 		Thread.sleep(3000);		
 		yearSelect.selectByVisibleText("1991");
+		
+
 		
 		
 		
