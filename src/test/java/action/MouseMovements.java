@@ -20,9 +20,9 @@ public class MouseMovements {
 		// options.addArguments("--incognito");
 		options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-popup-blocking", "enable-automation"));
 		// options.setAcceptInsecureCerts(true);
-		driver = new ChromeDriver(options);
+		// driver = new ChromeDriver(options);
 
-		Actions mouse = new Actions(driver);
+		// Actions mouse = new Actions(driver);
 		/*
 		 * driver.get("https://www.nseindia.com/"); WebElement mte=
 		 * driver.findElement(By.xpath("//a[text()='Market Data']")); WebElement
@@ -59,29 +59,65 @@ public class MouseMovements {
 		 * WebElement rightClick =
 		 * driver.findElement(By.xpath("//span[text()='right click me']"));
 		 * Thread.sleep(2000); mouse.contextClick(rightClick).build().perform();
-		 
-		// 6. Double Click
+		 * 
+		 * // 6. Double Click
+		 * 
+		 * driver.get(
+		 * "http://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html")
+		 * ;
+		 * 
+		 * mouse.doubleClick(driver.findElement(By.
+		 * xpath("//h2[text()='Radio Button(s)']"))).build().perform();
+		 * 
+		 * // 7. Send Keys driver.get("https://www.facebook.com/"); WebElement
+		 * txtUsername = driver.findElement(By.id("email"));
+		 * 
+		 * //mouse.sendKeys(txtUsername, "Donald TRUMP").build().perform();
+		 * //mouse.sendKeys(txtUsername,Keys.ENTER).build().perform();
+		 * 
+		 * 
+		 * // 8. Scroll to element //mouse.scrollToElement(driver.findElement(By.
+		 * xpath("//a[text()='Contact uploading and non-users']"))).build().perform();
+		 * 
+		 * 
+		 * // 9. Composite Action
+		 * 
+		 * 
+		 * mouse.moveToElement(txtUsername) .click() .keyDown(txtUsername, Keys.SHIFT)
+		 * .sendKeys(txtUsername, "hello") .keyUp(txtUsername, Keys.SHIFT)
+		 * .doubleClick(txtUsername) .contextClick() .build().perform();
+		 * 
+		 * enterTextInCaps(txtUsername,"helllllo",driver);
+		 * 
+		 * 
+		 */
+		String str = "hklnhfjkiwbJJJJJJJJaadxssssshfrkgfb";
 
-		driver.get("http://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html");
+		System.out.println(str.toUpperCase());
 
-		mouse.doubleClick(driver.findElement(By.xpath("//h2[text()='Radio Button(s)']"))).build().perform();
-*/
-		// 7. Send Keys
-		driver.get("https://www.facebook.com/");
-		WebElement txtUsername = driver.findElement(By.id("email"));
+		String s = "javatpoint";
 
-		mouse.sendKeys(txtUsername, "Donald TRUMP").build().perform();
-		//mouse.sendKeys(txtUsername,Keys.ENTER).build().perform();
+		String s1 = s.substring(0, 1).toUpperCase(); // first letter = J
+		String s2 = s.substring(1); // after 1st letter = avatpoint
 
-		
-		// 8. Scroll to element
-		mouse.scrollToElement(driver.findElement(By.xpath("//a[text()='Contact uploading and non-users']"))).build().perform();
+		s = s1 + s2;
+		System.out.println(s);
+		String res = s.substring(0, 1).toUpperCase() + s.substring(1); // J + avatpoint
+		System.out.println(res);
+		System.out.println(capitalize(str));
+	}
 
-		
-		// 9. Composite Action
-		
-		
-		
+	public static void enterTextInCaps(WebElement ele, String value, WebDriver driver) {
+		Actions action = new Actions(driver);
+		action.moveToElement(ele).click().keyDown(ele, Keys.SHIFT).sendKeys(ele, value).keyUp(ele, Keys.SHIFT)
+				.doubleClick(ele).contextClick().build().perform();
+	}
+
+	public static final String capitalize(String str) {
+		if (str == null || str.length() == 0) {
+			return str;
+		}
+		return str.substring(0, 1).toUpperCase() + str.substring(1);
 	}
 
 }
